@@ -4,14 +4,14 @@
 //  Copyright 2011 http://www.kalwaltart.it/ All rights reserved.
 //
 
-#include "testApp.h"
+#include "ofApp.h"
 
 //--------------------------------------------------------------
-void testApp::setup(){
+void ofApp::setup(){
     ofEnableAlphaBlending();
 	ofSetWindowShape(640, 480);
 
-	image.loadImage("mem.gif");
+	image.load("mem.gif");
 
     conway.allocate(640, 480);
     conway.setPasses(10);
@@ -48,16 +48,17 @@ void testApp::setup(){
                             else gl_FragColor = y; \
                         }");
     
-    conway.setTexture(image.getTextureReference());
+//    conway.setTexture(image.getTextureReference());
+	conway.setTexture(image.getTexture());
 }
 //--------------------------------------------------------------
-void testApp::update(){
+void ofApp::update(){
 
     conway.begin();
     ofClear(255, 255);
     conway.draw();
     ofSetColor(0,255);
-    ofCircle(mouseX, mouseY, 5);
+    ofDrawCircle(mouseX, mouseY, 5);
     conway.end();
     
     conway.update();
@@ -67,52 +68,52 @@ void testApp::update(){
 }
 
 //--------------------------------------------------------------
-void testApp::draw(){
+void ofApp::draw(){
 
     conway.draw();
 
 }
 
 //--------------------------------------------------------------
-void testApp::keyPressed(int key){
+void ofApp::keyPressed(int key){
 }
 
 //--------------------------------------------------------------
-void testApp::keyReleased(int key){
-
-}
-
-//--------------------------------------------------------------
-void testApp::mouseMoved(int x, int y ){
+void ofApp::keyReleased(int key){
 
 }
 
 //--------------------------------------------------------------
-void testApp::mouseDragged(int x, int y, int button){
+void ofApp::mouseMoved(int x, int y ){
 
 }
 
 //--------------------------------------------------------------
-void testApp::mousePressed(int x, int y, int button){
+void ofApp::mouseDragged(int x, int y, int button){
 
 }
 
 //--------------------------------------------------------------
-void testApp::mouseReleased(int x, int y, int button){
+void ofApp::mousePressed(int x, int y, int button){
 
 }
 
 //--------------------------------------------------------------
-void testApp::windowResized(int w, int h){
+void ofApp::mouseReleased(int x, int y, int button){
 
 }
 
 //--------------------------------------------------------------
-void testApp::gotMessage(ofMessage msg){
+void ofApp::windowResized(int w, int h){
 
 }
 
 //--------------------------------------------------------------
-void testApp::dragEvent(ofDragInfo dragInfo){
+void ofApp::gotMessage(ofMessage msg){
+
+}
+
+//--------------------------------------------------------------
+void ofApp::dragEvent(ofDragInfo dragInfo){
 
 }
