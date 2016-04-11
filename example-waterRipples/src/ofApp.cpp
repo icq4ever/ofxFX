@@ -1,7 +1,7 @@
 #include "ofApp.h"
 
 //--------------------------------------------------------------
-void testApp::setup(){
+void ofApp::setup(){
     ofSetFrameRate(60);
     ofEnableAlphaBlending();
     ofSetWindowShape(640*2, 480);
@@ -10,19 +10,19 @@ void testApp::setup(){
     bounce.allocate(640,480);
     
     ofImage background;
-    background.loadImage("fondo.jpg");
+    background.load("fondo.jpg");
     
-    bounce.setTexture(background.getTextureReference(), 1);
+    bounce.setTexture(background.getTexture(), 1);
 }
 
 //--------------------------------------------------------------
-void testApp::update(){
+void ofApp::update(){
     ofSetWindowTitle(ofToString(ofGetFrameRate()));
     
     rip.begin();
     ofFill();
     ofSetColor(ofNoise( ofGetFrameNum() ) * 255 * 5, 255);
-    ofEllipse(mouseX,mouseY, 10,10);
+    ofDrawEllipse(mouseX,mouseY, 10,10);
     rip.end();
     rip.update();
     
@@ -31,7 +31,7 @@ void testApp::update(){
 }
 
 //--------------------------------------------------------------
-void testApp::draw(){
+void ofApp::draw(){
     ofBackground(0);
     ofSetColor(255,255);
     
@@ -43,7 +43,7 @@ void testApp::draw(){
 }
 
 //--------------------------------------------------------------
-void testApp::keyPressed(int key){
+void ofApp::keyPressed(int key){
     if (key == OF_KEY_UP){
         rip.damping += 0.01;
     } else if ( key == OF_KEY_DOWN){
@@ -52,40 +52,40 @@ void testApp::keyPressed(int key){
 }
 
 //--------------------------------------------------------------
-void testApp::keyReleased(int key){
+void ofApp::keyReleased(int key){
 
 }
 
 //--------------------------------------------------------------
-void testApp::mouseMoved(int x, int y ){
+void ofApp::mouseMoved(int x, int y ){
 }
 
 //--------------------------------------------------------------
-void testApp::mouseDragged(int x, int y, int button){
+void ofApp::mouseDragged(int x, int y, int button){
     rip.damping = ofMap(y, 0, ofGetHeight(), 0.9, 1.0, true);
 }
 
 //--------------------------------------------------------------
-void testApp::mousePressed(int x, int y, int button){
+void ofApp::mousePressed(int x, int y, int button){
 
 }
 
 //--------------------------------------------------------------
-void testApp::mouseReleased(int x, int y, int button){
+void ofApp::mouseReleased(int x, int y, int button){
 
 }
 
 //--------------------------------------------------------------
-void testApp::windowResized(int w, int h){
+void ofApp::windowResized(int w, int h){
 
 }
 
 //--------------------------------------------------------------
-void testApp::gotMessage(ofMessage msg){
+void ofApp::gotMessage(ofMessage msg){
 
 }
 
 //--------------------------------------------------------------
-void testApp::dragEvent(ofDragInfo dragInfo){ 
+void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
 }
