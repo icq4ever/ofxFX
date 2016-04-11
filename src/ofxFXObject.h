@@ -52,9 +52,10 @@ public:
 
     ofxFXObject&    operator =(ofxFXObject& parent);
     ofxFXObject&    operator <<(ofTexture& _texture){ setTexture( _texture ); update(); return * this;};
-    ofxFXObject&    operator <<(ofBaseHasTexture& _texture){ setTexture( _texture.getTextureReference() ); update(); return * this;};
-    ofTexture&      operator[](int _nText){ if ((_nText < nTextures) && (_nText >= 0) ) return textures[_nText].getTextureReference(); };
+    ofxFXObject&    operator <<(ofBaseHasTexture& _texture){ setTexture( _texture.getTexture() ); update(); return * this;};
+    ofTexture&      operator[](int _nText){ if ((_nText < nTextures) && (_nText >= 0) ) return textures[_nText].getTexture(); };
 
+	
     virtual void    allocate(int _width, int _height, int _internalFormat);;
     virtual void    allocate(int _width, int _height);
     
@@ -93,8 +94,8 @@ public:
     
     ofxSwapBuffer&  getSwapBuffer() { return pingPong; };
     ofFbo*          getBackBuffer() const { return pingPong.src; };
-    virtual ofTexture & getTextureReference() { return pingPong.dst->getTextureReference(); };
-    virtual const ofTexture& getTextureReference() const { return pingPong.dst->getTextureReference(); };
+    virtual ofTexture & getTexture() { return pingPong.dst->getTexture(); };
+    virtual const ofTexture& getTexture() const { return pingPong.dst->getTexture(); };
     
     void            clear(int alpha = 255){ pingPong.clear(alpha); } 
     
